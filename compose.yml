@@ -1,6 +1,6 @@
 services:
   asspp:
-    image: ghcr.io/lakr233/assppweb:latest
+    image: yuccc/assppweb:server-accounts
     ports:
       - "8080:8080"
     volumes:
@@ -8,8 +8,11 @@ services:
     environment:
       - DATA_DIR=/data
       - PORT=8080
-      # - DOWNLOAD_THREADS=8
-      # - ACCESS_PASSWORD=your_password_here
+      - DOWNLOAD_THREADS=8
+      - ACCESS_PASSWORD=123456
+      - AUTO_CLEANUP_DAYS=3
+      - AUTO_CLEANUP_MAX_MB=1024
+      - MAX_DOWNLOAD_MB=0
     restart: unless-stopped
     logging:
       driver: "json-file"
